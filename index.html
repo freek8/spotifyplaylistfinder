@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>	
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-127928849-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	  gtag('config', 'UA-127928849-1');
+	</script>
+	<title>spotifyplaylistfinder.com</title>
+	<meta charset="utf-8"/>
+	<meta name="description" content="Search through more than 5 million lists created by other users and simply find the one that's perfect. Combine search terms like genres, artists, your mood, the weather, anything really.">
+	<meta name="author" content="Freek de Jong">
+	<meta name="viewport" content="width=device-width, initial-scale=1">	
+	<link href="https://fonts.googleapis.com/css?family=Heebo:700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Rambla:700i" rel="stylesheet">
+	<link rel="icon" type="image/png" href="favicon.png">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script> 
+	<style>
+		body {
+		 font-family: 'Heebo', sans-serif;
+		}
+		a {
+			color: #171717;
+		}
+		a:hover {
+			text-decoration: none;
+			color: #171717;
+		}
+		.fas, .fab {
+			color: #171717;
+		}
+		.jumbotron {
+			background-color: #00cc00;
+			padding-top: 20px;
+			padding-bottom: 20px;
+		}
+		#logo {
+			height:80px;
+		}
+		h1 a {
+			color: #f2f2f2;
+			 font-family: 'Rambla', sans-serif;
+		}
+		h1 a:hover {
+			text-decoration: none;
+			color: #f2f2f2;
+		}
+		#display-two, #display-three {
+			display: none;
+			font-weight: bold;
+		}
+		#input-fields {
+			max-width: 700px;
+		}
+		.form-control {
+			margin-bottom: 15px;
+			height: 50px;
+			text-align: center;
+			font-size: 20px;
+			border:1px solid #ccc;
+		}
+		#search {
+			background-color: #fff;
+			border: 1px solid #ccc;
+			height: 50px;
+			font-weight: bold;
+			width: 50%;
+			float: left;
+		}
+		#add-row {
+			background-color: #fff;
+			border: 1px solid #ccc;
+			height: 50px;
+			font-weight: bold;
+			width: 50px;
+			float: right;
+			border-radius: 4px;
+			margin-left: 15px;
+		}
+		#results {
+			max-width: 700px;
+			margin: auto;
+		}
+		.gsc-result-info {
+			font-size: 20px !important;
+			padding: 0 !important;
+			color: #171717 !important;
+		}
+		.gsc-orderby-label, .gs-spelling, .gsc-url-top, .gcsc-branding, .gcsc-find-more-on-google-text, .gcsc-find-more-on-google-root {
+			display: none!important;
+		}
+		.gsc-above-wrapper-area {
+			padding: 2px 0 5px 0 !important;
+			border: none !important;
+			margin-top: 20px !important;
+		}
+		.gsc-option-menu-container {
+			display: none!important;
+		}
+		.gcsc-more-maybe-branding-root {
+			display:none!important;
+		}
+		.gsc-result {
+		padding-bottom: 20px !important;
+		}
+		.gs-title, .gs-title b {
+			color: #00cc00 !important;
+			margin-bottom: 5px !important;
+			text-decoration: none !important;
+			font-weight: 900 !important;
+			font-size: 25px !important;
+			text-transform: uppercase;
+		}
+		.gs-image {
+			max-width: none !important;
+			max-height: none !important;
+			margin-right: 5px !important;
+		}
+		.gs-image-box.gs-web-image-box.gs-web-image-box-portrait, .gs-web-image-box-landscape img.gs-image, .gs-web-image-box-portrait img.gs-image {
+			width: auto !important;
+			height: auto !important;
+		}
+		.gsc-table-result, .gsc-thumbnail-inside, .gsc-url-top {
+			padding: 0 0 5px 0 !important;
+		}
+		.gsc-cursor-box {
+			text-align: center !important;
+		}		
+		.gsc-cursor-page {
+			color: #171717 !important;
+			font-size: 20px !important;
+			padding-right: 4px !important;
+			padding-left: 4px !important;
+		}	
+		.gs-no-results-result .gs-snippet, .gs-error-result {
+			background-color: #cc0000 !important;
+			border: none !important;
+			border-radius: 4px !important;
+			height: 50px !important;
+			line-height: 40px !important;
+			width: 100% !important;
+			color: #ccc !important;
+			text-align: center !important;
+			text-transform: uppercase !important;
+			font-weight: bold !important;
+			margin: none !important;
+			font-size: 15px !important;
+		}
+		#footer {
+			margin-top: 20px;
+			background-color: #00cc00;
+			padding: 20px;
+		}
+		#footer > div > a {
+			padding: 5px;
+			color: #f2f2f2;
+		}
+		.content-hide {
+			max-width: 700px;
+		}
+		@media only screen and (max-width: 600px) {
+			.gs-image {
+				max-width: 100px !important;
+			}
+			.gs-title, .gs-title b {
+				font-size: 20px !important;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="jumbotron text-center">
+		SPF	
+	</div>	
+	<div id="input-fields" class="container-fluid text-center">
+		<form id="form-submit">		
+			<div id="display-one">
+				<input id="one" class="form-control" type="text" placeholder="type in something" autocomplete="off" tabindex="1"/>
+			</div>	
+			<div id="display-two">
+				<input id="two" class="form-control" type="text" placeholder="how about something else" autocomplete="off" tabindex="2"/>
+			</div>
+			<div id="display-three">
+				<input id="three" class="form-control" type="text" placeholder="the more the better" autocomplete="off" tabindex="3"/>
+			</div>
+			<button id="search" class="btn" type="submit"><i class="fas fa-search"></i></button>
+			<button id="add-row" class="btn" type="button"><i class="fas fa-plus"></i></button>
+		</form>	
+	</div>
+	<div id="results">
+		<script>
+		  (function() {
+			var cx = '007822053161219446818:z-__o1fb45m';
+			var gcse = document.createElement('script');
+			gcse.type = 'text/javascript';
+			gcse.async = true;
+			gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+			var s = document.getElementsByTagName('script')[0];
+			s.parentNode.insertBefore(gcse, s);
+		  })();
+		</script>
+		<gcse:searchresults-only></gcse:searchresults-only>
+	</div>
+	
+	<script>
+		$(document).ready(function() {
+			$("#add-row").click(function() {
+				if ($("#display-two").css("display") === "none") {
+					$("#display-two").show();
+				} else if ($("#display-three").css("display") === "none") {
+					$("#display-three").show();
+					$("#add-row").hide();
+					$("#search").css("width","100%");
+				}
+			});			
+			$('#form-submit').submit(function(e) {
+				searchOrder ($('#one').val(), $('#two').val(), $('#three').val());
+				$('.content-hide').hide();
+				$("#display-two").show();
+				$("#display-three").show();
+				$("#add-row").hide();
+				$("#search").css("width","100%");
+
+				return false;
+			});      
+			function searchOrder (one, two, three) {			
+				$("#gsc-i-id1").val(one + ',' + two + ',' + three);
+				$(".gsc-search-button").click();
+				return;
+			};
+		});
+	</script>	
+</body>
+</html>
